@@ -3,7 +3,7 @@
    License: none (public domain)
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
 html,
 body,
 div,
@@ -93,7 +93,6 @@ video {
     vertical-align: baseline;
 }
 
-
 /* HTML5 display-role reset for older browsers */
 
 article,
@@ -128,7 +127,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
+    content: "";
     content: none;
 }
 
@@ -137,18 +136,191 @@ table {
     border-spacing: 0;
 }
 
+html {
+    font-size: 16px;
+}
+
+$red: #ec0b43;
+$green: #23d16c;
+$blue: #6622cc;
+
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 .header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 1vw;
     &__logo {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 7px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        background-color: $green;
         img {
-            width: 70px;
+            width: 55px;
+        }
+        h1 {
+            margin-left: 8px;
+            font-size: 2rem;
+        }
+    }
+
+    &__trigram {
+        position: absolute;
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        color: #fff;
+        top: 0;
+        left: 0;
+        transform: translate(-99%, 0);
+
+        svg {
+            margin-left: 5px;
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+    }
+
+    &__nav {
+        max-width: 50%;
+        flex-grow: 2;
+    }
+
+    &__menu {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    &__item {
+        a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000;
+            transition: 200ms;
+
+            &:hover {
+                color: $green;
+                transition: 200ms;
+            }
+        }
+    }
+
+    &__button {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 0 5px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+        color: #000;
+        transition: 200ms;
+
+        &_signup {
+            border: 1px solid $green;
+
+            &:hover {
+                background-color: $green;
+                color: #fff;
+            }
+        }
+
+        &_signin:hover {
+            color: $green;
+        }
+    }
+
+    &__mobile-logo {
+        display: none;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: $green;
+        padding: 2px;
+
+        img {
+            width: 36px;
+        }
+
+        h1 {
+            font-weight: 600;
+            color: #fff;
+        }
+    }
+}
+
+.body-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1000;
+    transition: .55s;
+}
+
+.body-shadow.active {
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+@media (max-width: 1100px) {
+    .header {
+        position: fixed;
+        box-sizing: border-box;
+        justify-content: space-between;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        box-shadow: 0px 10px 8px 0px rgba(34, 60, 80, 0.7);
+        background-color: #fff;
+        z-index: 5000;
+        transition-duration: 0.55s;
+        transition-timing-function: cubic-bezier(0.55, -0.5, 0.42, 1.5);
+        transform: translate(100%, 0);
+
+        &.open {
+            transform: translate(0, 0);
+        }
+
+        &__mobile-logo {
+            display: flex;
+        }
+
+        &__logo {
+            display: none;
+        }
+
+        &__nav {
+            margin-bottom: 50px;
+            flex-grow: 0;
+        }
+
+        &__menu {
+            flex-direction: column;
+        }
+
+        &__item {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        &__button {
+            display: block;
         }
     }
 }

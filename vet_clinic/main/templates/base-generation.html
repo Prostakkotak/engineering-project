@@ -14,10 +14,20 @@
 
 <body>
     <div class="wrapper">
-        <header class="header">
+        <header class="header" id="header">
+            <div class="header__trigram" id="trigram">
+                Меню <svg height="384pt" viewBox="0 -53 384 384" width="384pt" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                    <path
+                        d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                    <path
+                        d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                </svg>
+            </div>
             <a href="{% url 'index' %}" class="header__logo">
                 <img src="{% static 'images/logo.svg' %}" alt="logo">
-                <h1>Vet City</h1>
+                <h1>VetCity</h1>
             </a>
             <nav class="header__nav">
                 <ul class="header__menu">
@@ -28,13 +38,18 @@
                 </ul>
             </nav>
             <div class="header__authorization-block">
-                <a href="#" class="header__button header__button_signup">Войти</a>
-                <a href="#" class="header__button header__button_signin">Регистрация</a>
+                <a href="#" class="header__button header__button_signin">Войти</a>
+                <a href="#" class="header__button header__button_signup">Регистрация</a>
             </div>
         </header>
+        <div class="header__mobile-logo" id="mobile-logo">
+            <img src="{% static 'images/logo.svg' %}" alt="">
+            <h1>VetCity</h1>
+        </div>
 
         {% block content %} content {% endblock %}
     </div>
+    <script src="{% static 'js/header.js' %}"></script>
 </body>
 
 </html>
