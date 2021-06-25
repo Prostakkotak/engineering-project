@@ -1,0 +1,6 @@
+$ cat .gitignore
+
+vet_clinic/static/styles/styles.css.map
+vet_clinic/static/styles/styles.css
+vet_clinic/configuration/settings_prod.py
+db.sqlite3
