@@ -1,2 +1,40 @@
 {% extends 'base-generation.html' %} {% load static %} {% block title %}
 <title>Главная</title>{% endblock %}
+
+
+{% block content %}
+
+<h1 class="page-title">
+    Добро пожаловать в ветеринарный центр VetCity
+</h1>
+
+<div class="slider__wrap">
+    <section class="slider" id="mainSlider-container">
+        <ul class="slider__list" id='mainSlider-list'>
+            <li class="slider__slide"><img src="{% static 'images/slider/cat.png' %}" alt=""></li>
+            <li class="slider__slide"><img src="{% static 'images/slider/dog.png' %}" alt=""></li>
+            <li class="slider__slide"><img src="{% static 'images/slider/raccoon.png' %}" alt=""></li>
+        </ul>
+        <div class="slider__background-decorator"></div>
+    </section>
+    <div class="slider__button slider__button_right" id="mainSlider-buttonRight">
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg enable-background="new 0 0 512.002 512.002" version="1.1" viewBox="0 0 512 512" xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="m388.42 241.95-236.82-236.16c-7.759-7.733-20.321-7.72-28.067 0.04-7.74 7.759-7.72 20.328 0.04 28.067l222.72 222.1-222.73 222.1c-7.759 7.74-7.779 20.301-0.04 28.061 3.883 3.89 8.97 5.835 14.057 5.835 5.074 0 10.141-1.932 14.017-5.795l236.82-236.16c3.737-3.718 5.834-8.778 5.834-14.05s-2.103-10.326-5.834-14.051z" />
+        </svg>
+    </div>
+    <div class="slider__button slider__button_left" id="mainSlider-buttonLeft"><svg
+            enable-background="new 0 0 512.002 512.002" version="1.1" viewBox="0 0 512 512" xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="m388.42 241.95-236.82-236.16c-7.759-7.733-20.321-7.72-28.067 0.04-7.74 7.759-7.72 20.328 0.04 28.067l222.72 222.1-222.73 222.1c-7.759 7.74-7.779 20.301-0.04 28.061 3.883 3.89 8.97 5.835 14.057 5.835 5.074 0 10.141-1.932 14.017-5.795l236.82-236.16c3.737-3.718 5.834-8.778 5.834-14.05s-2.103-10.326-5.834-14.051z" />
+        </svg></div>
+</div>
+
+<script src="{% static 'js/animated-slider.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
+
+{% endblock %}

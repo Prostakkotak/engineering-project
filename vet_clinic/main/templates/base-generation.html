@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -30,6 +30,7 @@
                 <h1>VetCity</h1>
             </a>
             <nav class="header__nav">
+                <div class="header__mobile-close-button" id="header-close-button">Закрыть <img src="{% static 'images/close.svg' %}" alt=""></div>
                 <ul class="header__menu">
                     <li class="header__item"><a href="#">Главная</a></li>
                     <li class="header__item"><a href="#">Пусто</a></li>
@@ -47,7 +48,9 @@
             <h1>VetCity</h1>
         </div>
 
-        {% block content %} content {% endblock %}
+        <main class="main">
+            {% block content %} content {% endblock %}
+        </main>
     </div>
     <script src="{% static 'js/header.js' %}"></script>
 </body>

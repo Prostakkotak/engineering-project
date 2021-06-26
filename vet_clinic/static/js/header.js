@@ -1,4 +1,5 @@
 let trigram = document.getElementById('trigram'),
+    closeButton = document.getElementById('header-close-button'),
     header = document.getElementById('header'),
     bodyShadow = document.createElement('div');
 
@@ -16,6 +17,20 @@ trigram.addEventListener('click', () => {
     document.getElementsByClassName('header')[0].classList.toggle('open');
     bodyShadow.classList.toggle('active');
 });
+
+closeButton.addEventListener('click', () => {
+    document.getElementsByClassName('header')[0].classList.remove('open');
+    bodyShadow.classList.remove('active');
+    trigram.classList.remove('open');
+})
+
+bodyShadow.addEventListener('click', () => {
+    if (bodyShadow.classList.contains('active')) {
+        document.getElementsByClassName('header')[0].classList.remove('open');
+        bodyShadow.classList.remove('active');
+        trigram.classList.remove('open');
+    }
+})
 
 addEventListener('resize', () => {
     if (document.body.offsetWidth >= 1100) {
