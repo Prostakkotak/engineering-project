@@ -1,0 +1,26 @@
+{% extends 'base-generation.html' %}
+{% load static %}
+
+{% block title %}
+<title>Контакты</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Контакты</h1>
+<section class="contacts">
+    <div class="contacts__list-wrap">
+        <ul class="contacts__list">
+            {% for contact in contacts %}
+            <li class="contacts__contact">
+                <span>{{contact.name}}: </span>{{contact.value}}
+            </li>
+            {% endfor %}
+    </div>
+    <article class="gmap contacts__gmap">
+        <div class="gmap_canvas"><iframe height="400" id="gmap_canvas"
+                src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+        <style></style>
+    </article>
+</section>
+{% endblock %}

@@ -30,12 +30,13 @@
                 <h1>VetCity</h1>
             </a>
             <nav class="header__nav">
-                <div class="header__mobile-close-button" id="header-close-button">Закрыть <img src="{% static 'images/close.svg' %}" alt=""></div>
+                <div class="header__mobile-close-button" id="header-close-button">Закрыть <img
+                        src="{% static 'images/close.svg' %}" alt=""></div>
                 <ul class="header__menu">
-                    <li class="header__item"><a href="#">Главная</a></li>
-                    <li class="header__item"><a href="#">Пусто</a></li>
-                    <li class="header__item"><a href="#">Пусто</a></li>
-                    <li class="header__item"><a href="#">Контакты</a></li>
+                    <li class="header__item {% if request.path == '/' %}current{% endif %}"><a href="{% url 'index' %}">Главная</a></li>
+                    <li class="header__item {% if '/services/' in request.path %}current{% endif %}"><a href="{% url 'services' %}">Услуги</a></li>
+                    <li class="header__item {% if '/doctors/' in request.path %}current{% endif %}"><a href="{% url 'doctors' %}">Врачи</a></li>
+                    <li class="header__item {% if '/contacts/' in request.path %}current{% endif %}"><a href="{% url 'contacts' %}">Контакты</a></li>
                 </ul>
             </nav>
             <div class="header__authorization-block">
@@ -51,6 +52,23 @@
         <main class="main">
             {% block content %} content {% endblock %}
         </main>
+        <footer class="footer">
+
+            <ul class="footer__contacts">
+                <li class="footer__contact">
+                    Круглосуточно
+                </li>
+                <li class="footer__contact">
+                    +7 (495) 856-56-23
+                </li>
+                <li class="footer__contact">
+                    г. Москва, Ленинский пр-т, д. 83
+                </li>
+                <li class="footer__contact">
+                    © ООО «Вет Сити Клиникс»
+                </li>
+            </ul>
+        </footer>
     </div>
     <script src="{% static 'js/header.js' %}"></script>
 </body>

@@ -1,0 +1,35 @@
+{% extends 'base-generation.html' %}
+{% load static %}
+
+{% block title %}
+<title>
+    {{item.name}}
+</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="page-title">{{item.name}}</h1>
+
+<section class="service">
+    <p class="service__description">{{item.description}}</p>
+    <div class="service__price">{{item.price}} руб.</div>
+</section>
+<ul class="item-reviews">
+    <h2 class="item-reviews__title">Отзывы</h2>
+
+    {% for review in reviews %}
+    <li class="item-reviews__review">
+        <p class="item-reviews__content">
+            {{review.content}}
+        </p>
+
+        <p class="item-reviews__author">
+            {{review.author}}
+        </p>
+        <p class="item-reviews__date">
+            {{review.date}}
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

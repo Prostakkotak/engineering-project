@@ -1,0 +1,50 @@
+{% extends 'base-generation.html' %}
+{% load static %}
+
+{% block title %}
+<title>Услуги</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Услуги</h1>
+
+<section class="services-page">
+
+    <form method="GET" class="services-page__filters">
+        <select name="cat" id="category" class="services-page__input services-page__input_select">
+            <option value="">Любая категория</option>
+            <option value="Анестезия" {% if request.GET.cat == 'Анестезия' %}selected{% endif %} >Анестезия</option>
+            <option value="Диагностика" {% if request.GET.cat == 'Диагностика' %}selected{% endif %}>Диагностика</option>
+            <option value="Онкология" {% if request.GET.cat == 'Онкология' %}selected{% endif %}>Онкология</option>
+            <option value="ОРИТ" {% if request.GET.cat == 'ОРИТ' %}selected{% endif %}>ОРИТ</option>
+            <option value="Офтальмология" {% if request.GET.cat == 'Офтальмология' %}selected{% endif %}>Офтальмология</option>
+            <option value="Процедуры" {% if request.GET.cat == 'Процедуры' %}selected{% endif %}>Процедуры</option>
+            <option value="Стационар" {% if request.GET.cat == 'Стационар' %}selected{% endif %}>Стационар</option>
+            <option value="Стерилизация" {% if request.GET.cat == 'Стерилизация' %}selected{% endif %}>Стерилизация</option>
+            <option value="Стоматология" {% if request.GET.cat == 'Стоматология' %}selected{% endif %}>Стоматология</option>
+            <option value="Терапия" {% if request.GET.cat == 'Терапия' %}selected{% endif %}>Терапия</option>
+            <option value="Хирургия" {% if request.GET.cat == 'Хирургия' %}selected{% endif %}>Хирургия</option>
+        </select>
+
+        <input class="services-page__input services-page__input_search" type="text" name="q" id="search" placeholder="Поиск" value="{{request.GET.q}}">
+        <input type="submit" class="services-page__input services-page__input_submit">
+    </form>
+<div class="items-count">
+    Услуг на странице: {{services.count}}
+</div>
+    <ul class="services-page__list">
+        {% for service in services %}
+        <li class="services-page__service">
+            <a href="{% url 'services-item' pk=service.pk %}">
+                <h2 class="services-page__service-name">
+                    {{service.name}}
+                </h2>
+                <p class="services-page__price">
+                    {{service.price}}р
+                </p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

@@ -11,11 +11,40 @@
 <div class="slider__wrap">
     <section class="slider" id="mainSlider-container">
         <ul class="slider__list" id='mainSlider-list'>
-            <li class="slider__slide"><img src="{% static 'images/slider/cat.png' %}" alt=""></li>
-            <li class="slider__slide"><img src="{% static 'images/slider/dog.png' %}" alt=""></li>
-            <li class="slider__slide"><img src="{% static 'images/slider/raccoon.png' %}" alt=""></li>
+            <li class="slider__slide">
+                <div class="slider__text-block">
+                    <h2 class="slider__slide-title">Регулярный осмотр у ветеринара</h2>
+                    <p class="slider__text">
+                        Не только способствует сохранению здоровья вашего питомца, но и экономит ваши
+                        средства, исключая неожиданные проблемы
+                    </p>
+                    <a href="#" class="slider__link">Подробнее</a>
+                </div>
+                <img src="{% static 'images/slider/cat.png' %}" alt="">
+            </li>
+            <li class="slider__slide">
+                <div class="slider__text-block">
+                    <h2 class="slider__slide-title">Офтальмология - забота о вашем питомце</h2>
+                    <p class="slider__text">
+                        Следить за здоровьем глаз - очень важно, и в этом вам поможет ветеринарный врач-офтальмолог.
+                    </p>
+                    <a href="#" class="slider__link">Подробнее</a>
+                </div><img src="{% static 'images/slider/dog.png' %}" alt="">
+            </li>
+            <li class="slider__slide">
+                <div class="slider__text-block">
+                    <h2 class="slider__slide-title">Проверка онкологии</h2>
+                    <p class="slider__text">
+                        Ранняя диагностика повышает шансы на выздоровление! Запишите питомца на онкологический чекап
+                        (рекомендуется для животных старше пяти лет).
+                    </p>
+                    <a href="#" class="slider__link">Подробнее</a>
+                </div><img src="{% static 'images/slider/raccoon.png' %}" alt="">
+            </li>
         </ul>
         <div class="slider__background-decorator"></div>
+        <ul id="mainSlider-shortList" class="slider__short-list">
+        </ul>
     </section>
     <div class="slider__button slider__button_right" id="mainSlider-buttonRight">
 
@@ -34,7 +63,213 @@
         </svg></div>
 </div>
 
-<script src="{% static 'js/animated-slider.js' %}"></script>
+<section class="text-section">
+    <p> В нашей круглосуточной ветеринарной клинике работают профессионалы с глубокими знаниями и обширным опытом.</p>
+
+    <p>
+        Мы готовы оказать вашему питомцу высококвалифицированную ветеринарную помощь по любому вопросу: от диагностики и
+        планового обследования до сложных операций и консультаций узких специалистов.
+    </p>
+</section>
+
+<section class="services" id="servicesSlider-container">
+    <h2 class="services__title">Услуги ветеринарного центра</h2>
+    <div class="services__list-wrap">
+        <ul class="services__slider-list" id="servicesSlider-list">
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Анестезия&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/1.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Анестезия
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Диагностика&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/2.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Диагностика
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Онкология&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/3.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Онкология
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=ОРИТ&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/4.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            ОРИТ
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Офтальмология&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/5.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Офтальмология
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Процедуры&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/6.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Процедуры
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Стационар&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/7.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Стационар
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Стерилизация&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/8.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Стерилизация
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Стоматология&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/9.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Стоматология
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Терапия&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/10.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Терапия
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Хирургия&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/11.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Хирургия
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+            <li class="services__slider-item">
+                <a href="{% url 'services' %}?cat=Экзотолог&q=">
+                    <img class="services__slider-image" src="{% static 'images/services/12.svg' %}" alt="">
+                    <div class="services__text-wrap">
+                        <h3 class="services__slider-title">
+                            Экзотолог
+                        </h3>
+                        
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ul class="services__short-list" id="servicesSlider-shortList">
+    </ul>
+    <div class="services__slider-button services__slider-button_left" id="servicesSlider-buttonLeft">
+        <svg enable-background="new 0 0 512.002 512.002" version="1.1" viewBox="0 0 512 512" xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="m388.42 241.95-236.82-236.16c-7.759-7.733-20.321-7.72-28.067 0.04-7.74 7.759-7.72 20.328 0.04 28.067l222.72 222.1-222.73 222.1c-7.759 7.74-7.779 20.301-0.04 28.061 3.883 3.89 8.97 5.835 14.057 5.835 5.074 0 10.141-1.932 14.017-5.795l236.82-236.16c3.737-3.718 5.834-8.778 5.834-14.05s-2.103-10.326-5.834-14.051z" />
+        </svg>
+    </div>
+    <div class="services__slider-button services__slider-button_right" id="servicesSlider-buttonRight">
+        <svg enable-background="new 0 0 512.002 512.002" version="1.1" viewBox="0 0 512 512" xml:space="preserve"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="m388.42 241.95-236.82-236.16c-7.759-7.733-20.321-7.72-28.067 0.04-7.74 7.759-7.72 20.328 0.04 28.067l222.72 222.1-222.73 222.1c-7.759 7.74-7.779 20.301-0.04 28.061 3.883 3.89 8.97 5.835 14.057 5.835 5.074 0 10.141-1.932 14.017-5.795l236.82-236.16c3.737-3.718 5.834-8.778 5.834-14.05s-2.103-10.326-5.834-14.051z" />
+        </svg>
+    </div>
+</section>
+
+<section class="doctors" id="doctorsSlider-container">
+    <h2 class="doctors__title">Наши врачи</h2>
+
+    <ul class="doctors__slider-list" id="doctorsSlider-list">
+        {% for doctor in doctors %}
+        <li class="doctors__slider-item">
+            <div class="doctors__image-wrap">
+                <img src="{{doctor.photo.url}}" alt="">
+            </div>
+            <div class="doctors__text-wrap">
+                <h3 class="doctors__name">{{doctor.name}}</h3>
+                <p class="doctors__position">{{doctor.position}}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <ul class="doctors__short-list" id="doctorsSlider-shortList">
+
+    </ul>
+</section>
+
+<section class="reviews" id="reviewsSlider-container">
+    <h2 class="reviews__title">
+        Отзывы
+    </h2>
+    <ul class="reviews__slider-list" id="reviewsSlider-list">
+        {% for review in reviews %}
+        <li class="reviews__slider-item">
+            <p class="reviews__text">{{review.content}}</p>
+            <div>
+                <p class="reviews__reviewer">{{review.author}}</p>
+                <p class="reviews__date">{{review.date}}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <ul class="reviews__short-list" id="reviewsSlider-shortList">
+
+    </ul>
+</section>
+
+<script src="{% static 'js/mainSlider.js' %}"></script>
 <script src="{% static 'js/index.js' %}"></script>
 
 {% endblock %}
