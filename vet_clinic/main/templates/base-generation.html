@@ -37,12 +37,9 @@
                     <li class="header__item {% if '/services/' in request.path %}current{% endif %}"><a href="{% url 'services' %}">Услуги</a></li>
                     <li class="header__item {% if '/doctors/' in request.path %}current{% endif %}"><a href="{% url 'doctors' %}">Врачи</a></li>
                     <li class="header__item {% if '/contacts/' in request.path %}current{% endif %}"><a href="{% url 'contacts' %}">Контакты</a></li>
+                    <li class="header__item"><a href="{% url 'index' %}admin/">Админка</a></li>
                 </ul>
             </nav>
-            <div class="header__authorization-block">
-                <a href="#" class="header__button header__button_signin">Войти</a>
-                <a href="#" class="header__button header__button_signup">Регистрация</a>
-            </div>
         </header>
         <div class="header__mobile-logo" id="mobile-logo">
             <img src="{% static 'images/logo.svg' %}" alt="">
