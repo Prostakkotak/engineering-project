@@ -1,7 +1,11 @@
-from typing import ContextManager
 from django.shortcuts import render
 from django.views.generic import View
 from .models import *
+
+
+# DRF
+from rest_framework.viewsets import ModelViewSet
+from .serializers import *
 
 
 class Index(View):
@@ -86,3 +90,34 @@ class DoctorsItem(View):
             "item": item,
             "reviews": reviews,
         })
+
+
+""" API Views """
+
+class DoctorsViewSet(ModelViewSet):
+    serializer_class = DoctorSerializer
+    queryset = Doctor.objects.all()
+
+class DoctorReviewsViewSet(ModelViewSet):
+    serializer_class = DoctorReviewSerializer
+    queryset = DoctorReview.objects.all()
+
+    def get_queryset(self): # Переписываем станданртый метод чтобы брать отзывы по переданному id
+        doctor_id = self.request.query_params.get('id')
+        queryset = DoctorReview.objects.filter(doctor=doctor_id)
+
+        return queryset
+
+class ServicesViewSet(ModelViewSet):
+    serializer_class = ServiceSerializer
+    queryset = Service.objects.all()
+
+class ServiceReviewsViewSet(ModelViewSet):
+    serializer_class = ServiceReviewSerializer
+    queryset = ServiceReview.objects.all()
+
+    def get_queryset(self): # Переписываем станданртый метод чтобы брать отзывы по переданному id
+        service_id = self.request.query_params.get('id')
+        queryset = ServiceReview.objects.filter(service=service_id)
+
+        return queryset
