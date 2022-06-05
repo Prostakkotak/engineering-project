@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import View
+from django.db.models import Q
 from .models import *
 
 
 # DRF
 from rest_framework.viewsets import ModelViewSet
 from .serializers import *
+
+# Filters
+import django_filters.rest_framework
+from rest_framework import filters
 
 
 class Index(View):
@@ -97,6 +102,8 @@ class DoctorsItem(View):
 class DoctorsViewSet(ModelViewSet):
     serializer_class = DoctorSerializer
     queryset = Doctor.objects.all()
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'position']
 
 class DoctorReviewsViewSet(ModelViewSet):
     serializer_class = DoctorReviewSerializer
@@ -104,14 +111,16 @@ class DoctorReviewsViewSet(ModelViewSet):
 
     def get_queryset(self): # Переписываем станданртый метод чтобы брать отзывы по переданному id
         doctor_id = self.request.query_params.get('id')
-        queryset = DoctorReview.objects.filter(doctor=doctor_id)
+        queryset = DoctorReview.objects.filter(Q(doctor=doctor_id))
 
         return queryset
 
 class ServicesViewSet(ModelViewSet):
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
-
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_fields = ['name', 'price', 'category']
+ 
 class ServiceReviewsViewSet(ModelViewSet):
     serializer_class = ServiceReviewSerializer
     queryset = ServiceReview.objects.all()
