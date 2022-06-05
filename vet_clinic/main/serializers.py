@@ -1,4 +1,3 @@
-from turtle import position
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
 
