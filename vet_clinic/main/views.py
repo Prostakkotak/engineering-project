@@ -1,3 +1,4 @@
+from cmath import log
 from django.shortcuts import render
 from django.views.generic import View
 from django.db.models import Q
@@ -6,6 +7,9 @@ from .models import *
 
 # DRF
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 from .serializers import *
 
 # Filters
@@ -99,23 +103,42 @@ class DoctorsItem(View):
 
 """ API Views """
 
-class DoctorsViewSet(ModelViewSet):
+class DoctorsViewSet(ModelViewSet): # SEARCHFILTER
     serializer_class = DoctorSerializer
     queryset = Doctor.objects.all()
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'position']
 
-class DoctorReviewsViewSet(ModelViewSet):
+@api_view(["POST"]) # POST И Свой serializer
+def add_doctor(request):
+    if request.method == 'POST':
+        serializer = NewDoctorSerializer(data=request.data)
+        if serializer.is_valid():
+            Doctor.objects.create(
+                name=serializer.data['name'],
+                position=serializer.data['position'],
+                bio=serializer.data['bio']
+            )
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DoctorReviewsViewSet(ModelViewSet): # GET PARAMS && Q()
     serializer_class = DoctorReviewSerializer
     queryset = DoctorReview.objects.all()
 
-    def get_queryset(self): # Переписываем станданртый метод чтобы брать отзывы по переданному id
+    def get_queryset(self): # Переписываем станданртый метод чтобы фильтровать отзывы по GET параметрам
         doctor_id = self.request.query_params.get('id')
-        queryset = DoctorReview.objects.filter(Q(doctor=doctor_id))
+        query = self.request.query_params.get('q')
+
+        if query:
+            queryset = DoctorReview.objects.filter(Q(doctor=doctor_id) & Q(content__icontains=query))
+        else:
+            queryset = DoctorReview.objects.filter(Q(doctor=doctor_id))
 
         return queryset
 
-class ServicesViewSet(ModelViewSet):
+class ServicesViewSet(ModelViewSet): # DJANGO_FILTERS
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
