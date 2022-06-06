@@ -1,7 +1,12 @@
+from wsgiref.validate import validator
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
 
 from .models import *
+
+def not_short(value):
+    if len(value) < 5:
+        raise serializers.ValidationError('This field is too short')
 
 class DoctorSerializer(ModelSerializer):
     class Meta:
@@ -9,9 +14,9 @@ class DoctorSerializer(ModelSerializer):
         fields = "__all__"
 
 class NewDoctorSerializer(Serializer):
-    name = serializers.CharField()
-    position = serializers.CharField()
-    bio = serializers.CharField()
+    name = serializers.CharField(validators=[not_short])
+    position = serializers.CharField(validators=[not_short])
+    bio = serializers.CharField(validators=[not_short])
 
 class DoctorReviewSerializer(ModelSerializer):
     class Meta:
