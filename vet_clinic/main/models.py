@@ -6,7 +6,7 @@ from datetime import date, datetime
 class Doctor(models.Model):
     name = models.CharField(max_length=100, help_text='ФИО Врача', default='Иван Иванов Иванович')
     position = models.CharField(max_length=100, help_text='Должность', default='Практикант')
-    photo = models.ImageField()
+    photo = models.ImageField(blank=True)
     bio = models.TextField(blank=True, help_text="Краткая информация о враче")
 
     def __str__(self) -> str:
